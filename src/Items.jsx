@@ -7,7 +7,7 @@ const Items = () => {
   const { isLoading, data, isError, error } = useQuery({
     queryKey: ["tasks"],
     queryFn: async () => {
-      const { data } = await customFetch.get("/something");
+      const { data } = await customFetch.get("/");
       return data;
     },
   });
@@ -28,7 +28,7 @@ const Items = () => {
 
   return (
     <div className="items">
-      {data.data.taskList.map((item) => {
+      {data.taskList.map((item) => {
         return <SingleItem key={item.id} item={item} />;
       })}
     </div>
